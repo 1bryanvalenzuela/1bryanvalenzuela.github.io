@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Valenzuela Cáceres - Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="files/IMG_0394.JPG">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Bryan <span>Ignacio</span> Valenzuela Cáceres</a>
+        
+        <nav class="navbar">
+            <a href="index.html">Acerca de Mí</a>
+            <a href="projects.html">Proyectos</a>
+        </nav>
+
+        <a href="mailto:1bryanvalenzuela@gmail.com" class="contact">Contacto</a>
+    </header>
+
+    <div class="bg"></div>
+    
+    <section class="projects" id="projects">
+        <div class="projects-content">
+
+            <h2>Catálogo de Proyectos</h2>
+
+            <div id="tag-buttons">
+                <button class="tag-button" data-tag="ETL" onclick="toggleTag('ETL')">Extracción,<br>transformación y carga</button>
+                <button class="tag-button" data-tag="EDA" onclick="toggleTag('EDA')">Análisis exploratorio<br>de datos</button>
+                <button class="tag-button" data-tag="FC" onclick="toggleTag('FC')">Forecasting</button>
+                <button class="tag-button" data-tag="ML" onclick="toggleTag('ML')">Machine Learning</button>
+                <button class="tag-button" data-tag="PERSONAL" onclick="toggleTag('PERSONAL')">Recreación</button>
+            </div>
+        
+            <table id="tag-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Herramientas</th>
+                        <th>Tags</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#">Análisis y predicción con Spotify API</a></td>
+                        <td>Python, SQL, PowerBI</td>
+                        <td>ETL, EDA, ML, PERSONAL</td>
+                        <td>En Desarrollo</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/1bryanvalenzuela/lol-simple-analysis/blob/main/lolanalysis_es.ipynb">Análisis de partidas / League of Legends</a></td>
+                        <td>Python</td>
+                        <td>ETL, PERSONAL</td>
+                        <td>02-06-2024</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/1bryanvalenzuela/Listado-Autos-Usados-ML/blob/main/Used-Car-Listing.ipynb">Análisis y predicción de venta de vehiculos usados</a></td>
+                        <td>Python</td>
+                        <td>ETL, EDA, ML</td>
+                        <td>30-05-2024</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/1bryanvalenzuela/Testing-Forecast-BTC/blob/main/BTC-Forecast.ipynb">Predicción del valor de Bitcoin</a></td>
+                        <td>Python</td>
+                        <td>ETL, FC</td>
+                        <td>07-05-2024</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://nbviewer.org/github/1bryanvalenzuela/Analisis-Pizza-Sales/blob/main/Pizza-Sales.ipynb?flush_cache=true">Análisis y predicción de tienda de Pizzas</a></td>
+                        <td>Python</td>
+                        <td>ETL, EDA, FC</td>
+                        <td>15-03-2024</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/1bryanvalenzuela/Analisis-Chile-Propiedades/blob/main/Propiedades.ipynb">Análisis de venta de propiedades chilenas</a></td>
+                        <td>Python, SQL, PowerBI</td>
+                        <td>ETL, EDA</td>
+                        <td>11-03-2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <script>
+                let activeTags = [];
+        
+                function toggleTag(tag) {
+                    const index = activeTags.indexOf(tag);
+                    if (index > -1) {
+                        activeTags.splice(index, 1);
+                    } else {
+                        activeTags.push(tag);
+                    }
+                    filterTable();
+                    updateButtons();
+                }
+        
+                function filterTable() {
+                    const table = document.getElementById('tag-table');
+                    const tr = table.getElementsByTagName('tr');
+        
+                    for (let i = 1; i < tr.length; i++) { // Start at 1 to skip table header
+                        const td = tr[i].getElementsByTagName('td')[2]; // 2 is the index of the "Tags" column
+                        if (td) {
+                            const txtValue = td.textContent || td.innerText;
+                            const tagsInRow = txtValue.split(', ').map(tag => tag.trim());
+                            const showRow = activeTags.every(tag => tagsInRow.includes(tag));
+                            tr[i].style.display = showRow ? "" : "none";
+                        }
+                    }
+                }
+                        function updateButtons() {
+                      const buttons = document.getElementsByClassName('tag-button');
+                     for (let btn of buttons) {
+                         const tag = btn.getAttribute('data-tag');
+                         if (activeTags.includes(tag)) {
+                          btn.classList.add('active');
+                         } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                }
+            </script>
+
+        </div>
+    </section>
+
+<!--     <div class="about-img">
+            <img src="https://cdn-icons-png.flaticon.com/512/1/1247.png" alt="">
+        </div>--->
+
+    <footer class="footer">
+
+        <div class="social">
+            <a href="https://www.linkedin.com/in/1bryanvalenzuela/"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="https://github.com/1bryanvalenzuela"><i class='bx bxl-github'></i></a>
+            <a href="mailto:1bryanvalenzuela@gmail.com"><i class='bx bxs-envelope'></i></a>
+        </div>
+
+<!--        <ul class="list">
+        <li>
+            <a href="#">FAQ</a>
+        </li>
+        <li>
+            <a href="#">Nose</a>
+        </li>
+      </ul>-->
+
+        <p class="copyright">© 2024 Bryan Valenzuela Cáceres</p>
+    </footer>
+</body>
+</html>
