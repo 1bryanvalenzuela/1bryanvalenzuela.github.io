@@ -396,7 +396,7 @@ td a:hover{
   background-color: rgb(21, 139, 148);
 }
 .tag-button:hover {
-  box-shadow: 0px 0px 15px rgb(29, 191, 202);
+  box-shadow: 0px 0px 16px rgb(29, 191, 202);
 }
 
 @media (min-device-width: 1101px) and (max-width: 1600px) {
